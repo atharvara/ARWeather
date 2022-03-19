@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                 //the 3d model comes to the scene only when clickNo is one that means once
                 if (clickNo == 1) {
                     Session session = arCam.getArSceneView().getSession();
-                    float[] pos = { 0, 0, -1 };
+                    float[] pos = { 0, 0.05f, -0.50f };
                     float[] rotation = { 0, 0, 0, 1 };
                     Anchor anchor = session.createAnchor(new Pose(pos, rotation));
 
@@ -96,9 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
         AnchorNode anchorNode = new AnchorNode(anchor);
         // Creating a AnchorNode with a specific anchor
+
+        anchorNode.setRenderable(modelRenderable);
         anchorNode.setParent(arCam.getArSceneView().getScene());
+
         //attaching the anchorNode with the ArFragment
-        TransformableNode model = new TransformableNode(arCam.getTransformationSystem());
+       /* TransformableNode model = new TransformableNode(arCam.getTransformationSystem());
         model.setParent(anchorNode);
         model.getScaleController().setMaxScale(1.00f);
         model.getScaleController().setMinScale(0.75f);
@@ -106,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
         //attaching the anchorNode with the TransformableNode
         model.setRenderable(modelRenderable);
         //attaching the 3d model with the TransformableNode that is already attached with the node
-        model.select();
+        model.select();*/
 
     }
 }
