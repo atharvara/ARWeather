@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.ar.core.Anchor;
+import com.google.ar.core.Pose;
+import com.google.ar.core.Session;
 import com.google.ar.sceneform.AnchorNode;
 import com.google.ar.sceneform.math.Vector3;
 import com.google.ar.sceneform.rendering.ModelRenderable;
@@ -61,8 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 clickNo++;
                 //the 3d model comes to the scene only when clickNo is one that means once
                 if (clickNo == 1) {
-
-                    Anchor anchor = hitResult.createAnchor();
+                    Session session = arCam.getArSceneView().getSession();
+                    float[] pos = { 0, 0, -1 };
+                    float[] rotation = { 0, 0, 0, 1 };
+                    Anchor anchor = session.createAnchor(new Pose(pos, rotation));
 
                     ModelRenderable.builder()
                             .setSource(this, R.raw.rain)
