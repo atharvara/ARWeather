@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     Anchor anchor = session.createAnchor(new Pose(pos, rotation));
 
                     ModelRenderable.builder()
-                            .setSource(this, R.raw.rain)
+                            .setSource(this, R.raw.lightning)
                             .setIsFilamentGltf(true)
                             .build()
                             .thenAccept(modelRenderable -> addModel(anchor, modelRenderable))
